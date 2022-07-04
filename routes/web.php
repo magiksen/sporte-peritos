@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ContrasenaController;
+use App\Http\Controllers\SolicitudesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\ContrasenaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware([
@@ -31,13 +32,28 @@ Route::middleware([
     })->name('dashboard');
 
     /* Usuarios */
-    Route::get('/usuarios/all', [UsuarioController::class, 'AllUsuarios'])->name('all.usuarios');
-
-    Route::post('/usuarios/buscar', [UsuarioController::class, 'BuscarUsuario'])->name('buscar.usuarios');
+    Route::controller(UsuarioController::class)->group(function () {
+        Route::get('/usuarios/all', 'AllUsuarios')->name('all.usuarios');
+        Route::post('/usuarios/buscar', 'BuscarUsuario')->name('buscar.usuarios');
+        /* Activar Usuario */
+        Route::get('/activarusuario/{id}', 'ActivarUsuario');
+    });
 
     /* Contraseñas */
+    Route::controller(ContrasenaController::class)->group(function () {
+        Route::get('/contrasena/{id}', 'Index');
+        Route::post('/contrasena/update/{id}', 'CambiarContra');
+    });
+    
 
-    Route::get('/contrasena/{id}', [ContrasenaController::class, 'Index']);
+    /* Solicitudes */
+    Route::controller(SolicitudesController::class)->group(function () {
+        Route::get('/solicitudes', 'Index')->name('all.solicitudes');
+        Route::get('/solicitudes/buscar/{id}', 'Buscar');
+        Route::get('/solicitudes/estatus/{id}', 'ListarEstatus');
+        Route::post('/solicitudes/estatus/cambiar/{id}', 'CambiarEstatus');
+    });
+   
+    /* Profesiones */
 
-    Route::post('/contrasena/update/{id}', [ContrasenaController::class, 'CambiarContra']);
 });

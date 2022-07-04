@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="container">
             <div class="row" style="margin-bottom: 50px;">
-                 @if(session('success'))
+                @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>{{ session('success') }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        @if($buscar == true)
+                        @if($buscar == true && !empty($resultado))
                         <div class="card-header">Resultado de usuario</div>
 
                         {{-- <div>{{ var_dump($resultado) }}</div> --}}
@@ -77,9 +77,9 @@
                                     <td>No activo</td>
                                     @endif
                                     <td>
-                                        <a href="" class="btn btn-info">Solicitudes</a>
+                                        <a href="{{ url('solicitudes/buscar/'.$usuario->id) }}" class="btn btn-info">Solicitudes</a>
                                         @if($usuario->status == false)
-                                        <a href="" class="btn btn-success">Activar</a>
+                                        <a href="{{ url('activarusuario/'.$usuario->id) }}" class="btn btn-success">Activar</a>
                                         @endif
                                         <a href="{{ url('contrasena/'.$usuario->id) }}" class="btn btn-warning">Contraseña</a>
                                     </td>
@@ -89,6 +89,8 @@
                         </table>
                         
                     </div>
+                    @elseif($buscar == true && empty($resultado))
+                    <div class="alert alert-danger">Usuario no encontrado</div>
                     @endif
                 </div>
 

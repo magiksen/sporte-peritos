@@ -36,4 +36,12 @@ class UsuarioController extends Controller
 
         return view('admin.usuarios.index', compact('resultado', 'buscar'));
     }
+
+    public function ActivarUsuario($id) {
+        $affected = DB::connection('pgsql2')->table('users')
+              ->where('id', $id)
+              ->update(['status' => 'true']);
+
+        return Redirect()->route('all.usuarios')->with('success', 'Usuario activado correctamente');        
+    }
 }
