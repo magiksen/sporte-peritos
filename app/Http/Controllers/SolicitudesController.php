@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class SolicitudesController extends Controller
 {
     public function Index() {
-        $solicitudes = DB::connection('pgsql2')->table('estatus_solicitud_peritos')->get();
+        $listado = DB::connection('pgsql2')->table('estatus_solicitud_peritos')->get();
 
-        return view('admin.solicitudes.index', compact('solicitudes'));
+        return view('admin.solicitudes.index', compact('listado'));
     }
 
     public function Buscar($id) {

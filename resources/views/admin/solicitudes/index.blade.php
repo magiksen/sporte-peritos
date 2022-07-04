@@ -12,7 +12,6 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">Estados de las Solicitudes</div>
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -22,7 +21,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($solicitudes as $solicitud)
+                                @foreach($listado as $solicitud)
                                 <tr>
                                     <th scope="row">{{ $solicitud->id }}</th>
                                     <td>{{ $solicitud->descripcion }}</td>
@@ -31,10 +30,11 @@
                                     @else
                                     <td>No activo</td>
                                     @endif
+                                </tr>    
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                     </div>
                 </div>
 

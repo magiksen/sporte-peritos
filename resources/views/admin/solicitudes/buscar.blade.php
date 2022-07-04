@@ -12,7 +12,11 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">Solicitudes</div>
-
+                        @if(count($solicitudes) <= 0)
+                        <div class="card-title">
+                            No se encontraron solicitudes
+                        </div>
+                        @else
                         <table class="table">
                             <thead>
                             <tr>
@@ -43,7 +47,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
+                        @endif
                     </div>
                 </div>
 
