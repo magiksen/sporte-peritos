@@ -19,7 +19,10 @@
                         Usuarios
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('all.solicitudes') }}" :active="request()->routeIs('all.solicitudes')">
-                        Listado Estado Solicitudes
+                        Estatus Solicitudes
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('all.profesiones') }}" :active="request()->routeIs('all.profesiones')">
+                        Profesiones
                     </x-jet-nav-link>
                 </div>
             </div>

@@ -29,7 +29,9 @@ class SolicitudesController extends Controller
         $estatus = DB::connection('pgsql2')->table('estatus_solicitud_peritos')->get();
 
         $estatu = DB::connection('pgsql2')->table('solicitud_peritos')
-        ->where('id', $id)->first(); // Falta el join para mostrar el nombe del estatus
+            ->join('estatus_solicitud_peritos', 'solicitud_peritos.id_estatus_solicitud', '=', 'estatus_solicitud_peritos.id')
+            ->select('solicitud_peritos.*', 'estatus_solicitud_peritos.descripcion as estatus_descripcion')
+            ->where('solicitud_peritos.id', $id)->first();
 
 
         return view('admin.solicitudes.estatus', compact('estatus', 'estatu'));
