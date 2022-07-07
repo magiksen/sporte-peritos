@@ -1,0 +1,3 @@
+buscador de profesiones por nombre o id
+poner en mayuscula al inserta nueva profesion
+poner en capialize al actualizar la profesion en la solicitud

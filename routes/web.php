@@ -41,6 +41,8 @@ Route::middleware([
         Route::get('/solicitudes/buscar/{id}', 'Buscar');
         Route::get('/solicitudes/estatus/{id}', 'ListarEstatus');
         Route::post('/solicitudes/estatus/cambiar/{id}', 'CambiarEstatus');
+        Route::get('/solicitudes/profesion/{id}', 'GetProfesion');
+        Route::post('/solicitudes/profesion/cambiar/{id}', 'UpdateProfesion');
     });
 
     /* Profesiones */

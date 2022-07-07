@@ -46,4 +46,24 @@ class SolicitudesController extends Controller
 
         return Redirect()->back()->with('success', 'Estatus cambiado correctamente');
     }
+
+    public function GetProfesion($id) {
+        $profesion = DB::connection('pgsql2')->table('solicitud_profesion_peritos')->where('id_perito_solicitud',$id)->first();
+
+        return view('admin.solicitudes.profesion', compact('profesion'));
+    }
+
+    public function UpdateProfesion(Request $request, $id) {
+        $nueva_profesion_id= $request->nueva_profesion_id;
+        $nueva_profesion = $request->nueva_profesion;
+
+        $affected = DB::connection('pgsql2')->table('solicitud_profesion_peritos')
+            ->where('id', $id)
+            ->update([
+                'id_profesions' => $nueva_profesion_id,
+                'descripcion' => $nueva_profesion
+            ]);
+
+        return Redirect()->back()->with('success', 'Profesion de la solicitud actualizada correctamente');
+    }
 }

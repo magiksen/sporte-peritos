@@ -33,6 +33,9 @@
                                 <button type="submit" class="btn btn-primary">Cambiar</button>
                             </form>
                         </div>
+                        <div class="card-footer">
+                            <a href="{{ url()->previous() }}" class="btn btn-danger">Volver</a>
+                        </div>
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="container">
-                
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -41,8 +41,9 @@
                                     @endif
                                     <td>{{ Carbon\Carbon::parse($solicitud->created_at)->format('d-m-Y') }}</td>
                                     <td>
-                                        <a href="{{ url('solicitudes/estatus/'.$solicitud->id) }}" class="btn btn-warning">Cambia Estatus Solicitud</a>
-                                        <a href="" class="btn btn-success">Cambia Estado
+                                        <a href="{{ url('solicitudes/estatus/'.$solicitud->id) }}" class="btn btn-success">Cambia Estatus Solicitud</a>
+                                        <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-success">Cambiar Profesion </a>
+                                        <a href="" class="btn btn-success">Cambiar Especialidad </a>
                                     </td>
                                 @endforeach
                             </tbody>
