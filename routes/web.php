@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ContrasenaController;
 use App\Http\Controllers\SolicitudesController;
@@ -35,7 +33,7 @@ Route::middleware([
         Route::get('/contrasena/{id}', 'Index');
         Route::post('/contrasena/update/{id}', 'CambiarContra');
     });
-    
+
 
     /* Solicitudes */
     Route::controller(SolicitudesController::class)->group(function () {
@@ -44,10 +42,11 @@ Route::middleware([
         Route::get('/solicitudes/estatus/{id}', 'ListarEstatus');
         Route::post('/solicitudes/estatus/cambiar/{id}', 'CambiarEstatus');
     });
-   
+
     /* Profesiones */
     Route::controller(ProfesionesController::class)->group(function () {
         Route::get('/profesiones', 'Index')->name('all.profesiones');
+        Route::post('/profesiones/insertar/', 'Store')->name('store.profesion');
     });
 
     /* Especialidades */
