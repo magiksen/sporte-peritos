@@ -27,4 +27,20 @@ class ProfesionesController extends Controller
 
         return Redirect()->back()->with('success', 'Profesion registrada correctamente');
     }
+
+    public function Edit($id) {
+        $profesiones = DB::connection('pgsql2')->table('profesion_personas')->where('id',$id)->first();
+
+        return view('admin.profesiones.editar', ['profesiones' => $profesiones]);
+    }
+
+    public function Update(Request $request, $id) {
+        $nueva_descripcion = $request->nueva_descripcion;
+
+        $affected = DB::connection('pgsql2')->table('profesion_personas')
+            ->where('id', $id)
+            ->update(['descripcion' => $nueva_descripcion]);
+
+        return Redirect()->route('all.profesiones')->with('success', 'Profesion actualizada correctamente');
+    }
 }

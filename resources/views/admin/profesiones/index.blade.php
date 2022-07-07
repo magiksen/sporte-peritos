@@ -40,8 +40,7 @@
                                         <td>No activo</td>
                                     @endif
                                     <td>
-                                        <a href="" class="btn btn-info">Editar</a>
-                                        <a href="" class="btn btn-danger">Borrar</a>
+                                        <a href="{{ url('profesiones/editar/'.$profesion->id) }}" class="btn btn-info">Editar</a>
                                     </td>
                                 </tr>
                             @endforeach

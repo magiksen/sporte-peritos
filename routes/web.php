@@ -47,6 +47,8 @@ Route::middleware([
     Route::controller(ProfesionesController::class)->group(function () {
         Route::get('/profesiones', 'Index')->name('all.profesiones');
         Route::post('/profesiones/insertar/', 'Store')->name('store.profesion');
+        Route::get('/profesiones/editar/{id}', 'Edit');
+        Route::post('/profesiones/cambiar/{id}', 'Update');
     });
 
     /* Especialidades */
