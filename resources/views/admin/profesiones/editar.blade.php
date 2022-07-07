@@ -24,7 +24,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nueva_descripcion" class="form-label">Nueva Descripcion</label>
-                                    <input type="text" name="nueva_descripcion" id="nueva_descripcion" value="{{ $profesiones->descripcion }}">
+                                    <input type="text" class="form-control" name="nueva_descripcion" id="nueva_descripcion" value="{{ $profesiones->descripcion }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Cambiar</button>
                             </form>

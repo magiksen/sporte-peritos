@@ -24,11 +24,11 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nueva_profesion_id" class="form-label">ID nueva profesion</label>
-                                    <input type="text" name="nueva_profesion_id" id="nueva_profesion_id" >
+                                    <input type="text" class="form-control" name="nueva_profesion_id" id="nueva_profesion_id" >
                                 </div>
                                 <div class="mb-3">
                                     <label for="nueva_profesion" class="form-label">Nueva Descripcion Profesion</label>
-                                    <input type="text" name="nueva_profesion" id="nueva_profesion" >
+                                    <input type="text" class="form-control" name="nueva_profesion" id="nueva_profesion" >
                                 </div>
                                 <button type="submit" class="btn btn-primary">Cambiar</button>
                             </form>
