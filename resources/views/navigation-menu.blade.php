@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <img class="block h-9 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sudebip.png/800px-Sudebip.png" alt="logo">
                     </a>
                 </div>
 
@@ -15,9 +15,9 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         Inicio
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('all.usuarios') }}" :active="request()->routeIs('all.usuarios')">
-                        Usuarios
-                    </x-jet-nav-link>
+{{--                    <x-jet-nav-link href="{{ route('all.usuarios') }}" :active="request()->routeIs('all.usuarios')">--}}
+{{--                        Usuarios--}}
+{{--                    </x-jet-nav-link>--}}
                     <x-jet-nav-link href="{{ route('all.solicitudes') }}" :active="request()->routeIs('all.solicitudes')">
                         Estatus Solicitudes
                     </x-jet-nav-link>

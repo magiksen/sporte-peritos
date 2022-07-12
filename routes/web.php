@@ -19,7 +19,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $buscar = false;
+
+        return view('admin.usuarios.index', compact('buscar'));
     })->name('dashboard');
 
     /* Usuarios */
