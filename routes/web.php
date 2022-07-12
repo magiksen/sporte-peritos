@@ -6,6 +6,7 @@ use App\Http\Controllers\ContrasenaController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\ProfesionesController;
 use App\Http\Controllers\EspecialidadesController;
+use App\Http\Controllers\TrazaController;
 
 
 Route::get('/', function () {
@@ -67,4 +68,7 @@ Route::middleware([
     /* Recaudos*/
 
     /* Traza */
+    Route::controller(TrazaController::class)->group(function () {
+        Route::get('/seguimiento', 'Index')->name('trazas');
+    });
 });

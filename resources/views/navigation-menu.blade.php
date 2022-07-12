@@ -27,6 +27,9 @@
                     <x-jet-nav-link href="{{ route('all.especialidades') }}" :active="request()->routeIs('all.especialidades')">
                         Especialidades
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('trazas') }}" :active="request()->routeIs('trazas')">
+                        Seguimiento
+                    </x-jet-nav-link>
                 </div>
             </div>
 
