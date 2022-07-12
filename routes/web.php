@@ -63,4 +63,8 @@ Route::middleware([
         Route::get('/especialidades/editar/{id}', 'Edit');
         Route::post('/especialidades/cambiar/{id}', 'Update');
     });
+
+    /* Recaudos*/
+
+    /* Traza */
 });

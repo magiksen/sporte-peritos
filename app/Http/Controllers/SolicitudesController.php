@@ -55,7 +55,7 @@ class SolicitudesController extends Controller
 
     public function UpdateProfesion(Request $request, $id) {
         $nueva_profesion_id= $request->nueva_profesion_id;
-        $nueva_profesion = $request->nueva_profesion;
+        $nueva_profesion = ucwords($request->nueva_profesion);
 
         $affected = DB::connection('pgsql2')->table('solicitud_profesion_peritos')
             ->where('id', $id)

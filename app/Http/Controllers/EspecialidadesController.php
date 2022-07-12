@@ -21,7 +21,7 @@ class EspecialidadesController extends Controller
 
         DB::connection('pgsql2')->table('especialidad_personas')->insert([
             'id' => $last_id + 1,
-            'descripcion' => $request->especialidad_nombre,
+            'descripcion' => strtoupper($request->especialidad_nombre),
             'activo' => true,
             'created_at' => Carbon::now(),
         ]);
@@ -36,7 +36,7 @@ class EspecialidadesController extends Controller
     }
 
     public function Update(Request $request, $id) {
-        $nueva_descripcion = $request->nueva_descripcion;
+        $nueva_descripcion = strtoupper($request->nueva_descripcion);
 
         $affected = DB::connection('pgsql2')->table('especialidad_personas')
             ->where('id', $id)
