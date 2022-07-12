@@ -43,7 +43,7 @@
                                     <td>
                                         <a href="{{ url('solicitudes/estatus/'.$solicitud->id) }}" class="btn btn-success">Cambia Estatus Solicitud</a>
                                         <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-success">Cambiar Profesion </a>
-                                        <a href="" class="btn btn-success">Cambiar Especialidad </a>
+                                        <a href="{{ url('solicitudes/especialidad/'.$solicitud->id) }}" class="btn btn-success">Cambiar Especialidad </a>
                                     </td>
                                 @endforeach
                             </tbody>

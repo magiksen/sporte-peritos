@@ -66,4 +66,26 @@ class SolicitudesController extends Controller
 
         return Redirect()->back()->with('success', 'Profesion de la solicitud actualizada correctamente');
     }
+
+    public function GetEspecialidad($id) {
+        $especialidad = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')
+            ->join('especialidad_personas', 'solicitud_especialidad_peritos.id_especialidad', '=', 'especialidad_personas.id')
+            ->select('solicitud_especialidad_peritos.*', 'especialidad_personas.descripcion as especialidad_descripcion')
+            ->where('id_perito_solicitud',$id)
+            ->first();
+
+        return view('admin.solicitudes.especialidad', compact('especialidad'));
+    }
+
+    public function UpdateEspecialidad(Request $request, $id) {
+        $nueva_especialidad_id= $request->nueva_especialidad_id;
+
+        $affected = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')
+            ->where('id', $id)
+            ->update([
+                'id_especialidad' => $nueva_especialidad_id,
+            ]);
+
+        return Redirect()->back()->with('success', 'Especialidad de la solicitud actualizada correctamente');
+    }
 }
