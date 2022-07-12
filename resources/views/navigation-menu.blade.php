@@ -24,6 +24,9 @@
                     <x-jet-nav-link href="{{ route('all.profesiones') }}" :active="request()->routeIs('all.profesiones')">
                         Profesiones
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('all.especialidades') }}" :active="request()->routeIs('all.especialidades')">
+                        Especialidades
+                    </x-jet-nav-link>
                 </div>
             </div>
 

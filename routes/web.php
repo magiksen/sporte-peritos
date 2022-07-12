@@ -5,6 +5,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ContrasenaController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\ProfesionesController;
+use App\Http\Controllers\EspecialidadesController;
 
 
 Route::get('/', function () {
@@ -54,4 +55,10 @@ Route::middleware([
     });
 
     /* Especialidades */
+    Route::controller(EspecialidadesController::class)->group(function () {
+        Route::get('/especialidades', 'Index')->name('all.especialidades');
+        Route::post('/especialidades/insertar/', 'Store')->name('store.especialidad');
+        Route::get('/especialidades/editar/{id}', 'Edit');
+        Route::post('/especialidades/cambiar/{id}', 'Update');
+    });
 });
