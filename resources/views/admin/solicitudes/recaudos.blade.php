@@ -10,12 +10,18 @@
 
             <div class="row">
                 <div class="col-md-8">
-
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ session('success') }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header">Recaudos</div>
                         <table class="table">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Recaudo</th>
                                 <th scope="col">Aprobado</th>
@@ -26,6 +32,7 @@
                             <tbody>
                             @foreach($recaudos as $recaudo)
                                 <tr>
+                                    <td>{{ $recaudo->id }}</td>
                                     <th scope="row">{{ $recaudo->id_recaudo }}</th>
                                     <td>{{ $recaudo->descripcion }}</td>
                                     @if($recaudo->aprobado)
@@ -35,7 +42,7 @@
                                     @endif
                                     <td>{{ $recaudo->correccion }}</td>
                                     <td>
-                                        <a href="" class="btn btn-info">Habilitar</a>
+                                        <a href="{{ url('solicitudes/recaudos/habilitar/'.$recaudo->id) }}" class="btn btn-info">Habilitar</a>
                                         <a href="" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>

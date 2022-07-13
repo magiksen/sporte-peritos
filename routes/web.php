@@ -9,6 +9,7 @@ use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\TrazaController;
 
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -38,7 +39,6 @@ Route::middleware([
         Route::post('/contrasena/update/{id}', 'CambiarContra');
     });
 
-
     /* Solicitudes */
     Route::controller(SolicitudesController::class)->group(function () {
         Route::get('/solicitudes', 'Index')->name('all.solicitudes');
@@ -50,6 +50,8 @@ Route::middleware([
         Route::get('/solicitudes/especialidad/{id}', 'GetEspecialidad');
         Route::post('/solicitudes/especialidad/cambiar/{id}', 'UpdateEspecialidad');
         Route::get('/solicitudes/recaudos/{id}', 'GetRecaudos');
+        Route::get('/solicitudes/recaudos/habilitar/{id}', 'Habilitar');
+
     });
 
     /* Profesiones */
@@ -68,10 +70,8 @@ Route::middleware([
         Route::post('/especialidades/cambiar/{id}', 'Update');
     });
 
-    /* Recaudos*/
-
     /* Traza */
     Route::controller(TrazaController::class)->group(function () {
-        Route::get('/seguimiento', 'Index')->name('trazas');
+        Route::post('/seguimiento', 'Index')->name('trazas');
     });
 });

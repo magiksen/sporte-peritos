@@ -92,10 +92,21 @@ class SolicitudesController extends Controller
     public function GetRecaudos($id) {
         $recaudos = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')
             ->join('recaudo_personas', 'solicitud_recaudo_peritos.id_recaudo', '=', 'recaudo_personas.id')
+            ->select('solicitud_recaudo_peritos.*', 'recaudo_personas.descripcion as descripcion')
             ->where('id_perito_solicitud',$id)->get();
 
         $nombres_recaudos = DB::connection('pgsql2')->table('recaudo_personas')->get();
 
         return view('admin.solicitudes.recaudos', compact('recaudos', 'nombres_recaudos'));
+    }
+
+    public function Habilitar($id) {
+        $affected = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')
+            ->where('id', $id)
+            ->update([
+                'correccion' => '0',
+            ]);
+
+        return Redirect()->back()->with('success', 'Recaudo habilitado para montarlo');
     }
 }
