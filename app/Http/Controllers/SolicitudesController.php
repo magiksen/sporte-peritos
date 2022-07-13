@@ -88,4 +88,14 @@ class SolicitudesController extends Controller
 
         return Redirect()->back()->with('success', 'Especialidad de la solicitud actualizada correctamente');
     }
+
+    public function GetRecaudos($id) {
+        $recaudos = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')
+            ->join('recaudo_personas', 'solicitud_recaudo_peritos.id_recaudo', '=', 'recaudo_personas.id')
+            ->where('id_perito_solicitud',$id)->get();
+
+        $nombres_recaudos = DB::connection('pgsql2')->table('recaudo_personas')->get();
+
+        return view('admin.solicitudes.recaudos', compact('recaudos', 'nombres_recaudos'));
+    }
 }

@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-                <img class="block h-9 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sudebip.png/800px-Sudebip.png" alt="logo">
+                <img class="block h-9 w-auto" src="{{ asset('/img/sudebip.png') }}" alt="logo">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

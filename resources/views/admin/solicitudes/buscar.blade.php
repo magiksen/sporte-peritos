@@ -41,9 +41,10 @@
                                     @endif
                                     <td>{{ Carbon\Carbon::parse($solicitud->created_at)->format('d-m-Y') }}</td>
                                     <td>
-                                        <a href="{{ url('solicitudes/estatus/'.$solicitud->id) }}" class="btn btn-success">Cambia Estatus Solicitud</a>
-                                        <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-success">Cambiar Profesion </a>
-                                        <a href="{{ url('solicitudes/especialidad/'.$solicitud->id) }}" class="btn btn-success">Cambiar Especialidad </a>
+                                        <a href="{{ url('solicitudes/estatus/'.$solicitud->id) }}" class="btn btn-outline-primary">Estatus Solicitud</a>
+                                        <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-outline-primary">Profesion </a>
+                                        <a href="{{ url('solicitudes/especialidad/'.$solicitud->id) }}" class="btn btn-outline-primary">Especialidad </a>
+                                        <a href="{{ url('solicitudes/recaudos/'.$solicitud->id) }}" class="btn btn-outline-primary">Recaudos</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -49,6 +49,7 @@ Route::middleware([
         Route::post('/solicitudes/profesion/cambiar/{id}', 'UpdateProfesion');
         Route::get('/solicitudes/especialidad/{id}', 'GetEspecialidad');
         Route::post('/solicitudes/especialidad/cambiar/{id}', 'UpdateEspecialidad');
+        Route::get('/solicitudes/recaudos/{id}', 'GetRecaudos');
     });
 
     /* Profesiones */

@@ -1,3 +1,9 @@
 buscador de profesiones por nombre o id
-poner en mayuscula al inserta nueva profesion
-poner en capialize al actualizar la profesion en la solicitud
+//poner en mayuscula al inserta nueva profesion
+//poner en capialize al actualizar la profesion en la solicitud
+
+Ver recaudos de la solicitud
+poder borrarlos en caso de duplicado
+pode insertar para que suban los recaudos
+editar lascorecion para habilitar lacarga de racaudos
+validacion de no agregar recaudosi ya existe
