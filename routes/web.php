@@ -72,6 +72,6 @@ Route::middleware([
 
     /* Traza */
     Route::controller(TrazaController::class)->group(function () {
-        Route::post('/seguimiento', 'Index')->name('trazas');
+        Route::get('/seguimiento', 'Index')->name('trazas');
     });
 });
