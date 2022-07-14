@@ -50,7 +50,9 @@ Route::middleware([
         Route::get('/solicitudes/especialidad/{id}', 'GetEspecialidad');
         Route::post('/solicitudes/especialidad/cambiar/{id}', 'UpdateEspecialidad');
         Route::get('/solicitudes/recaudos/{id}', 'GetRecaudos');
-        Route::get('/solicitudes/recaudos/habilitar/{id}', 'Habilitar');
+        Route::get('/solicitudes/recaudos/habilitar/{id}', 'HabilitaRecaudo');
+        Route::get('/solicitudes/recaudos/eliminar/{id}', 'EliminarRecaudo');
+        Route::post('/solicitudes/recaudos/insertar', 'GuardarRecaudo')->name('store.recaudo');
 
     });
 

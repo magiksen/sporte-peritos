@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -97,10 +98,16 @@ class SolicitudesController extends Controller
 
         $nombres_recaudos = DB::connection('pgsql2')->table('recaudo_personas')->get();
 
-        return view('admin.solicitudes.recaudos', compact('recaudos', 'nombres_recaudos'));
+        $id_solicitud = $id;
+
+        $id_usuario = DB::connection('pgsql2')->table('solicitud_peritos')
+            ->where('id', $id_solicitud)
+            ->first();
+
+        return view('admin.solicitudes.recaudos', compact('recaudos', 'nombres_recaudos', 'id_solicitud','id_usuario'));
     }
 
-    public function Habilitar($id) {
+    public function HabilitarRecaudo($id) {
         $affected = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')
             ->where('id', $id)
             ->update([
@@ -108,5 +115,35 @@ class SolicitudesController extends Controller
             ]);
 
         return Redirect()->back()->with('success', 'Recaudo habilitado para montarlo');
+    }
+
+    public function EliminarRecaudo($id) {
+        $affected = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')
+            ->where('id', $id)
+            ->delete();
+
+        return Redirect()->back()->with('success', 'Recaudo eliminado correctamente');
+    }
+
+    public function GuardarRecaudo(Request $request) {
+
+        $last_record = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')->latest('id')->first();
+        $last_id = $last_record->id;
+
+        DB::connection('pgsql2')->table('solicitud_recaudo_peritos')->insert([
+            'id' => $last_id + 1,
+            'id_perito_solicitud' => $request->solicitud,
+            'id_recaudo' => $request->recaudo,
+            'aprobado' => 'false',
+            'comentario' => '',
+            'formato' => '',
+            'id_usuario' => $request->usuario,
+            'correccion' => '0',
+            'adjunto' => 'borrador.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return Redirect()->back()->with('success', 'Recaudo agregado correctamente');
     }
 }

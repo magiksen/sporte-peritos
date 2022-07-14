@@ -43,7 +43,7 @@
                                     <td>{{ $recaudo->correccion }}</td>
                                     <td>
                                         <a href="{{ url('solicitudes/recaudos/habilitar/'.$recaudo->id) }}" class="btn btn-info">Habilitar</a>
-                                        <a href="" class="btn btn-danger">Eliminar</a>
+                                        <a href="{{ url('solicitudes/recaudos/eliminar/'.$recaudo->id) }}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,7 +56,7 @@
                     <div class="card">
                         <div class="card-header">Agregar Recaudo</div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="{{ route('store.recaudo') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <select class="form-select" name="recaudo" id="recaudo">
@@ -64,6 +64,12 @@
                                             <option value="{{ $nrecaudo->id }}">{{ $nrecaudo->descripcion }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="hidden" class="form-control" name="solicitud" id="solicitud" value="{{ $id_solicitud }}">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="hidden" class="form-control" name="usuario" id="usuario" value="{{ $id_usuario->id_usuario }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Agregar</button>
                             </form>
