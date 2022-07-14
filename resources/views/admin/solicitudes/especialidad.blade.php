@@ -17,7 +17,7 @@
 
                 <div class="col-md-5">
                     <div class="card">
-                        <div class="card-header">Editar Especialidad de la solicitud</div>
+                        <div class="card-header">Editar Especialidad de la solicitud #{{ $id_solicitud }}</div>
                         <div class="card-body">
                             <div class="card-title">Especialidad Actual: {{ $especialidad->id_especialidad }} - {{ $especialidad->especialidad_descripcion }}  </div>
                             <form action="{{ url('solicitudes/especialidad/cambiar/'.$especialidad->id) }}" method="POST">

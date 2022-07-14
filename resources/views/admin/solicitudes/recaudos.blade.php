@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     <div class="card">
-                        <div class="card-header">Recaudos</div>
+                        <div class="card-header">Recaudos de la Solicitud #{{ $id_solicitud }}</div>
                         <table class="table">
                             <thead>
                             <tr>

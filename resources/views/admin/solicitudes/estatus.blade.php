@@ -17,7 +17,7 @@
 
                 <div class="col-md-5">
                     <div class="card">
-                        <div class="card-header">Cambiar Estatus Solicitud</div>
+                        <div class="card-header">Cambiar Estatus Solicitud #{{ $id_solicitud }}</div>
                         <div class="card-title">Estatus Actual: {{ $estatu->estatus_descripcion }}</div>
                         <div class="card-body">
                             <form action="{{ url('solicitudes/estatus/cambiar/'.$estatu->id) }}" method="POST">

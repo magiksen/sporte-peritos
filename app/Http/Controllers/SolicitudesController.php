@@ -34,8 +34,9 @@ class SolicitudesController extends Controller
             ->select('solicitud_peritos.*', 'estatus_solicitud_peritos.descripcion as estatus_descripcion')
             ->where('solicitud_peritos.id', $id)->first();
 
+        $id_solicitud = $id;
 
-        return view('admin.solicitudes.estatus', compact('estatus', 'estatu'));
+        return view('admin.solicitudes.estatus', compact('estatus', 'estatu', 'id_solicitud'));
     }
 
     public function CambiarEstatus(Request $request, $id) {
@@ -51,7 +52,9 @@ class SolicitudesController extends Controller
     public function GetProfesion($id) {
         $profesion = DB::connection('pgsql2')->table('solicitud_profesion_peritos')->where('id_perito_solicitud',$id)->first();
 
-        return view('admin.solicitudes.profesion', compact('profesion'));
+        $id_solicitud = $id;
+
+        return view('admin.solicitudes.profesion', compact('profesion','id_solicitud'));
     }
 
     public function UpdateProfesion(Request $request, $id) {
@@ -75,7 +78,9 @@ class SolicitudesController extends Controller
             ->where('id_perito_solicitud',$id)
             ->first();
 
-        return view('admin.solicitudes.especialidad', compact('especialidad'));
+        $id_solicitud = $id;
+
+        return view('admin.solicitudes.especialidad', compact('especialidad', 'id_solicitud'));
     }
 
     public function UpdateEspecialidad(Request $request, $id) {

@@ -17,7 +17,7 @@
 
                 <div class="col-md-5">
                     <div class="card">
-                        <div class="card-header">Editar profesion de la solicitud</div>
+                        <div class="card-header">Editar profesion de la solicitud #{{ $id_solicitud }}</div>
                         <div class="card-body">
                             <div class="card-title">Profesión Actual: {{ $profesion->id_profesions }} - {{ $profesion->descripcion }}  </div>
                             <form action="{{ url('solicitudes/profesion/cambiar/'.$profesion->id) }}" method="POST">
