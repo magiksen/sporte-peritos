@@ -40,7 +40,7 @@
                 </div>
 
             </div>
-                
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -87,7 +87,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                     </div>
                     @elseif($buscar == true && empty($resultado))
                     <div class="alert alert-danger">Usuario no encontrado</div>

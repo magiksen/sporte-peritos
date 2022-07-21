@@ -9,6 +9,12 @@
         <div class="container">
 
             <div class="row">
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ session('success') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">Solicitudes</div>
@@ -45,6 +51,7 @@
                                         <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-outline-primary">Profesion </a>
                                         <a href="{{ url('solicitudes/especialidad/'.$solicitud->id) }}" class="btn btn-outline-primary">Especialidad </a>
                                         <a href="{{ url('solicitudes/recaudos/'.$solicitud->id) }}" class="btn btn-outline-primary">Recaudos</a>
+                                        <a href="{{ url('solicitudes/eliminar/'.$solicitud->id) }}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                                 @endforeach

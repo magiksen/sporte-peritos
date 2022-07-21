@@ -53,6 +53,7 @@ Route::middleware([
         Route::get('/solicitudes/recaudos/habilitar/{id}', 'HabilitaRecaudo');
         Route::get('/solicitudes/recaudos/eliminar/{id}', 'EliminarRecaudo');
         Route::post('/solicitudes/recaudos/insertar', 'GuardarRecaudo')->name('store.recaudo');
+        Route::get('/solicitudes/eliminar/{id}', 'EliminarSolicitud');
 
     });
 

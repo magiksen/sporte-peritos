@@ -151,4 +151,33 @@ class SolicitudesController extends Controller
 
         return Redirect()->back()->with('success', 'Recaudo agregado correctamente');
     }
+
+    public function EliminarSolicitud($id) {
+        $eliminarcredencial = DB::connection('pgsql2')->table('traza_solicitud_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminartraza = DB::connection('pgsql2')->table('credencial_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminarrecaudo = DB::connection('pgsql2')->table('solicitud_recaudo_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminarasociacion = DB::connection('pgsql2')->table('solicitud_asociacion_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminarejercicio = DB::connection('pgsql2')->table('solicitud_ejercicio_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminarespecialidad = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminarpofesion = DB::connection('pgsql2')->table('solicitud_profesion_peritos')
+            ->where('id_perito_solicitud', $id)
+            ->delete();
+        $eliminarsolicitud = DB::connection('pgsql2')->table('solicitud_peritos')
+            ->where('id', $id)
+            ->delete();
+
+        return Redirect()->back()->with('success', 'Solicitud eliminada correctamente');
+    }
 }
