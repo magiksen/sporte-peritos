@@ -180,4 +180,25 @@ class SolicitudesController extends Controller
 
         return Redirect()->back()->with('success', 'Solicitud eliminada correctamente');
     }
+
+    public function TrazaSolicitud($id) {
+        $trazas = DB::connection('pgsql2')->table('traza_solicitud_peritos as tsp')
+            ->join('estatus_solicitud_peritos as esp', 'tsp.id_estatus_solicitud', '=', 'esp.id')
+            ->join('users as user', 'tsp.id_usuario', '=', 'user.id')
+            ->select('tsp.*', 'esp.descripcion as estatus_name', 'user.name as usuario_name')
+            ->where('id_perito_solicitud', $id)
+            ->get();
+
+        $solicitud_id = $id;
+
+        $datos_usuario = DB::connection('pgsql2')->table('solicitud_peritos as sp')
+            ->join('users as usuario', 'sp.id_usuario', '=', 'usuario.id')
+            ->select('sp.*', 'usuario.name as nombre', 'usuario.email as correo', 'usuario.cedula as cedula', 'usuario.created_at as creado')
+            ->where('sp.id', $id)
+            ->first();
+
+        // Falta ver las credenciales
+
+        return view('admin.solicitudes.traza', compact('trazas', 'solicitud_id', 'datos_usuario'));
+    }
 }

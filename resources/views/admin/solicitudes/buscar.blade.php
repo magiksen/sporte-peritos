@@ -51,6 +51,7 @@
                                         <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-outline-primary">Profesion </a>
                                         <a href="{{ url('solicitudes/especialidad/'.$solicitud->id) }}" class="btn btn-outline-primary">Especialidad </a>
                                         <a href="{{ url('solicitudes/recaudos/'.$solicitud->id) }}" class="btn btn-outline-primary">Recaudos</a>
+                                        <a href="{{ route('solicitud.traza', $solicitud->id ) }}" class="btn btn-warning">Traza</a>
                                         <a href="{{ url('solicitudes/eliminar/'.$solicitud->id) }}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
