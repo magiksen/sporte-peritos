@@ -21,7 +21,9 @@
                             <p>Usuario: <strong>{{ $datos_usuario->nombre }}</strong></p>
                             <p>Email: <strong>{{ $datos_usuario->correo }}</strong></p>
                             <p>Cedula: <strong>{{ $datos_usuario->cedula }}</strong></p>
-                            <p>Fecha: <strong>{{ $datos_usuario->creado }}</strong></p>
+                            <p>Fecha de creacion del Usuario: <strong>{{ $datos_usuario->creado }}</strong></p>
+                            <p>Credencial: <strong>{{ $credencial->ncredencial }}</strong></p>
+                            <p>Validad hasta: <strong>{{ $credencial->fcredencial }}</strong></p>
                         </div>
 
                         <table class="table">

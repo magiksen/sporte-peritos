@@ -197,8 +197,13 @@ class SolicitudesController extends Controller
             ->where('sp.id', $id)
             ->first();
 
-        // Falta ver las credenciales
+        // Credenciales (Preguntar si updated_at es la fecha de vencimiento)
+        $credencial = DB::connection('pgsql2')->table('credencial_peritos as cp')
+            ->join('peritos as p', 'cp.id_perito', '=', 'p.id')
+            ->select('cp.*', 'p.rnp as ncredencial', 'p.updated_at as fcredencial')
+            ->where('cp.id_perito_solicitud', $id)
+            ->first();
 
-        return view('admin.solicitudes.traza', compact('trazas', 'solicitud_id', 'datos_usuario'));
+        return view('admin.solicitudes.traza', compact('trazas', 'solicitud_id', 'datos_usuario', 'credencial'));
     }
 }
