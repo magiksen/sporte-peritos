@@ -59,6 +59,9 @@
                             </tbody>
                         </table>
                         @endif
+                        <div class="card-footer">
+                            <a href="{{ route('dashboard') }}" class="btn btn-danger">Volver</a>
+                        </div>
                     </div>
                 </div>
 
