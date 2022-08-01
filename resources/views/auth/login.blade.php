@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-                <img class="block h-9 w-auto" src="{{ asset('/img/sudebip.png') }}" alt="logo">
+                <h1 class="text-white text-3xl ">Sistema de Soporte para Peritos</h1>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
