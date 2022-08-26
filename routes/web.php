@@ -74,6 +74,7 @@ Route::middleware([
         Route::post('/especialidades/insertar/', 'Store')->name('store.especialidad');
         Route::get('/especialidades/editar/{id}', 'Edit');
         Route::post('/especialidades/cambiar/{id}', 'Update');
+        Route::get('/especialidades/eliminar/{id}', 'Delete');
     });
 
     /* Traza */

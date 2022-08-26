@@ -44,4 +44,12 @@ class EspecialidadesController extends Controller
 
         return Redirect()->route('all.especialidades')->with('success', 'Especialidad actualizada correctamente');
     }
+
+    public function Delete($id) {
+        DB::connection('pgsql2')->table('especialidad_personas')
+            ->where('id', $id)
+            ->delete();
+
+        return Redirect()->route('all.especialidades')->with('success', 'Especialidad eliminada correctamente');
+    }
 }

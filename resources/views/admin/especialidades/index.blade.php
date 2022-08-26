@@ -41,6 +41,7 @@
                                     @endif
                                     <td>
                                         <a href="{{ url('especialidades/editar/'.$especialidad->id) }}" class="btn btn-info">Editar</a>
+                                        <a href="{{ url('especialidades/eliminar/'.$especialidad->id) }}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach
