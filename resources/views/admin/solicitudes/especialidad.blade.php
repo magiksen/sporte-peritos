@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="card-title">
                                 @if($especialidades->isNotEmpty())
-                                <p class="text-lg text-white bg-green-900 py-2 px-2">Especialidades Actuales</p>
+                                <p class="text-lg text-white bg-gray-900 py-2 px-2">Especialidades Actuales</p>
                                 <table class="table">
                                     <thead>
                                     <tr>
