@@ -72,15 +72,34 @@ class SolicitudesController extends Controller
     }
 
     public function GetEspecialidad($id) {
-        $especialidad = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')
+        $especialidades = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')
             ->join('especialidad_personas', 'solicitud_especialidad_peritos.id_especialidad', '=', 'especialidad_personas.id')
             ->select('solicitud_especialidad_peritos.*', 'especialidad_personas.descripcion as especialidad_descripcion')
             ->where('id_perito_solicitud',$id)
-            ->first();
+            ->get();
 
         $id_solicitud = $id;
 
-        return view('admin.solicitudes.especialidad', compact('especialidad', 'id_solicitud'));
+//        dd($especialidades);
+
+        return view('admin.solicitudes.especialidad', compact('especialidades', 'id_solicitud'));
+    }
+
+    public function AgregarEspecialidad(Request $request, $id) {
+        $nueva_especialidad_id= $request->nueva_especialidad_id;
+
+        $last_record = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')->latest('id')->first();
+        $last_id = $last_record->id;
+
+        DB::connection('pgsql2')->table('solicitud_especialidad_peritos')->insert([
+            'id' => $last_id + 1,
+            'id_perito_solicitud' => $id,
+            'id_especialidad' => $nueva_especialidad_id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return Redirect()->back()->with('success', 'Especialidad de la solicitud agregada correctamente');
     }
 
     public function UpdateEspecialidad(Request $request, $id) {
@@ -93,6 +112,15 @@ class SolicitudesController extends Controller
             ]);
 
         return Redirect()->back()->with('success', 'Especialidad de la solicitud actualizada correctamente');
+    }
+
+    public function EliminarEspecialidad($id) {
+
+        $affected = DB::connection('pgsql2')->table('solicitud_especialidad_peritos')
+            ->where('id', $id)
+            ->delete();
+
+        return Redirect()->back()->with('success', 'Especialidad de la solicitud eliminada correctamente');
     }
 
     public function GetRecaudos($id) {

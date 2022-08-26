@@ -49,6 +49,8 @@ Route::middleware([
         Route::post('/solicitudes/profesion/cambiar/{id}', 'UpdateProfesion');
         Route::get('/solicitudes/especialidad/{id}', 'GetEspecialidad');
         Route::post('/solicitudes/especialidad/cambiar/{id}', 'UpdateEspecialidad');
+        Route::post('/solicitudes/especialidad/agregar/{id}', 'AgregarEspecialidad');
+        Route::get('/solicitudes/especialidad/eliminar/{id}', 'EliminarEspecialidad');
         Route::get('/solicitudes/recaudos/{id}', 'GetRecaudos');
         Route::get('/solicitudes/recaudos/habilitar/{id}', 'HabilitaRecaudo');
         Route::get('/solicitudes/recaudos/eliminar/{id}', 'EliminarRecaudo');
