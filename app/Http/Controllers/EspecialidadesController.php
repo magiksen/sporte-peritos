@@ -8,8 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class EspecialidadesController extends Controller
 {
-    public function Index() {
-        $especialidades = DB::connection('pgsql2')->table('especialidad_personas')->latest()->paginate();
+    public function Index(Request $request) {
+
+        $buscar = mb_strtoupper($request->search);
+
+        if ($request->filled('search')) {
+            $especialidades = DB::connection('pgsql2')->table('especialidad_personas')
+                ->where('descripcion', 'LIKE', '%'.$buscar.'%')
+                ->latest()
+                ->paginate();
+        } else {
+            $especialidades = DB::connection('pgsql2')->table('especialidad_personas')->latest()->paginate();
+        }
 
         return view('admin.especialidades.index', compact('especialidades'));
     }
