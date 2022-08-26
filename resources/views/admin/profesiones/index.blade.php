@@ -9,6 +9,15 @@
         <div class="container">
 
             <div class="row">
+                <div class="px-4 mx-auto flex justify-center mt-10">
+                    <form method="GET">
+                        <div class="mb-3">
+                            <input type="text" name="search" value="{{ request()->get('search') }}" class="rounded border-gray-800 mb-4"
+                                   placeholder="Buscar..." aria-label="Search" aria-describedby="button-addon2">
+                            <button class="bg-blue-800 text-white rounded px-4 py-2 inline" type="submit" id="button-addon2">Buscar</button>
+                        </div>
+                    </form>
+                </div>
                 <div class="col-md-8">
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">

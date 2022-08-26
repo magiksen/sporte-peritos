@@ -7,8 +7,18 @@ use Illuminate\Http\Request;
 
 class ProfesionesController extends Controller
 {
-    public function Index() {
-        $profesiones = DB::connection('pgsql2')->table('profesion_personas')->latest()->paginate();
+    public function Index(Request $request) {
+
+        $buscar = mb_strtoupper($request->search);
+
+        if ($request->filled('search')) {
+            $profesiones = DB::connection('pgsql2')->table('profesion_personas')
+                ->where('descripcion', 'LIKE', '%'.$buscar.'%')
+                ->latest()
+                ->paginate();
+        } else {
+            $profesiones = DB::connection('pgsql2')->table('profesion_personas')->latest()->paginate();
+        }
 
         return view('admin.profesiones.index', compact('profesiones'));
     }

@@ -15,7 +15,7 @@
                     </div>
                 @endif
 
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">Editar Especialidades de la solicitud #{{ $id_solicitud }}</div>
                         <div class="card-body">
@@ -46,10 +46,17 @@
                                 <p class="text-lg text-white bg-red-900 py-2 px-2">No hay especialidades registradas para esta solicitud</p>
                                 @endif
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ url()->previous() }}" class="btn btn-danger">Volver</a>
+                        </div>
+                    </div>
+                </div>
 
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">Agregar Nueva Especialidad</div>
                             <div class="card-body">
-                                <p class="text-white font-bold text-xl py-3 px-3 bg-gray-900">Agregar nueva Especialidad</p>
-
                                 <form action="{{ url('solicitudes/especialidad/agregar/'.$id_solicitud) }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
@@ -59,13 +66,8 @@
                                     <button type="submit" class="btn btn-primary">Agregar</button>
                                 </form>
                             </div>
-
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ url()->previous() }}" class="btn btn-danger">Volver</a>
                         </div>
                     </div>
-                </div>
 
             </div>
         </div>
