@@ -24,7 +24,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nueva_especialidad_id" class="form-label">ID nueva Especialidad</label>
-                                    <input type="text" class="form-control" name="nueva_especialidad_id" id="nueva_especialidad_id" >
+                                    <input type="text" class="form-control" name="nueva_especialidad_id" id="nueva_especialidad_id" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Cambiar</button>
                             </form>
