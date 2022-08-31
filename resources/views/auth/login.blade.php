@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <img class="block" src="{{ asset('/img/logo-peritos.png') }}" width=700>
-{{--            <h1 class="text-white text-3xl ">Sistema de Soporte para Peritos</h1>--}}
+            <h1 class="text-gray-900 text-center text-3xl"> Iniciar Sesión</h1>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
