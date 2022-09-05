@@ -215,6 +215,7 @@ class SolicitudesController extends Controller
             ->join('users as user', 'tsp.id_usuario', '=', 'user.id')
             ->select('tsp.*', 'esp.descripcion as estatus_name', 'user.name as usuario_name')
             ->where('id_perito_solicitud', $id)
+            ->orderBy('tsp.created_at', 'desc')
             ->get();
 
         $solicitud_id = $id;
