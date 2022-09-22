@@ -52,7 +52,7 @@ Route::middleware([
         Route::post('/solicitudes/especialidad/agregar/{id}', 'AgregarEspecialidad');
         Route::get('/solicitudes/especialidad/eliminar/{id}', 'EliminarEspecialidad');
         Route::get('/solicitudes/recaudos/{id}', 'GetRecaudos');
-        Route::get('/solicitudes/recaudos/habilitar/{id}', 'HabilitaRecaudo');
+        Route::get('/solicitudes/recaudos/habilitar/{id}', 'HabilitarRecaudo');
         Route::get('/solicitudes/recaudos/eliminar/{id}', 'EliminarRecaudo');
         Route::post('/solicitudes/recaudos/insertar', 'GuardarRecaudo')->name('store.recaudo');
         Route::get('/solicitudes/eliminar/{id}', 'EliminarSolicitud');
