@@ -49,6 +49,7 @@
                                     <td>
                                         <a href="{{ url('solicitudes/estatus/'.$solicitud->id) }}" class="btn btn-outline-primary mb-2">Estatus Solicitud</a>
                                         <a href="{{ url('solicitudes/profesion/'.$solicitud->id) }}" class="btn btn-outline-primary mb-2">Profesion </a>
+                                        <a href="{{ url('solicitudes/experiencia/'.$solicitud->id) }}" class="btn btn-outline-primary mb-2">Experiencia </a>
                                         <a href="{{ url('solicitudes/especialidad/'.$solicitud->id) }}" class="btn btn-outline-primary mb-2">Especialidad </a>
                                         <a href="{{ url('solicitudes/recaudos/'.$solicitud->id) }}" class="btn btn-outline-primary mb-2">Recaudos</a>
                                         <a href="{{ route('solicitud.traza', $solicitud->id ) }}" class="btn btn-warning mb-2">Traza</a>

@@ -57,6 +57,8 @@ Route::middleware([
         Route::post('/solicitudes/recaudos/insertar', 'GuardarRecaudo')->name('store.recaudo');
         Route::get('/solicitudes/eliminar/{id}', 'EliminarSolicitud');
         Route::get('/solicitudes/traza/{id}', 'TrazaSolicitud')->name('solicitud.traza');
+        Route::get('/solicitudes/experiencia/{id}', 'GetExperiencia');
+        Route::post('/solicitudes/experiencia/cambiar/{id}', 'UpdateExperiencia');
 
     });
 

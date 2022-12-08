@@ -235,4 +235,24 @@ class SolicitudesController extends Controller
 
         return view('admin.solicitudes.traza', compact('trazas', 'solicitud_id', 'datos_usuario', 'credencial'));
     }
+
+    public function GetExperiencia($id) {
+        $profesion = DB::connection('pgsql2')->table('solicitud_profesion_peritos')->where('id_perito_solicitud',$id)->first();
+
+        $id_solicitud = $id;
+
+        return view('admin.solicitudes.experiencia', compact('profesion','id_solicitud'));
+    }
+
+    public function UpdateExperiencia(Request $request, $id) {
+        $nueva_experiencia = $request->nueva_experiencia;
+
+        $affected = DB::connection('pgsql2')->table('solicitud_profesion_peritos')
+            ->where('id', $id)
+            ->update([
+                'experiencia' => $nueva_experiencia,
+            ]);
+
+        return Redirect()->back()->with('success', 'Experiencia como tasador actualizada correctamente');
+    }
 }
