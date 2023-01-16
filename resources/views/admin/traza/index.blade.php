@@ -25,6 +25,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID Solicitud</th>
+                                    <th scope="col">Usuario</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">Evaluador</th>
                                     <th scope="col">Fecha</th>
@@ -34,6 +35,7 @@
                                 @foreach($trazas as $traza)
                                     <tr>
                                         <th scope="row">{{ $traza->id_perito_solicitud }}</th>
+                                        <td>{{ $traza->usuario_solicitud_id  }}</td>
                                         <td>{{ $traza->estatus_name  }}</td>
                                         <td>{{ $traza->usuario_name  }}</td>
                                         <td>{{ Carbon\Carbon::parse($traza->created_at)->format('d-m-Y') }}</td>
