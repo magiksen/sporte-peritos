@@ -237,6 +237,36 @@ class SolicitudesController extends Controller
         return view('admin.solicitudes.traza', compact('trazas', 'solicitud_id', 'datos_usuario', 'credencial'));
     }
 
+    public function TrazaDescargar($id) {
+        $trazas = DB::connection('pgsql2')->table('traza_solicitud_peritos as tsp')
+            ->join('estatus_solicitud_peritos as esp', 'tsp.id_estatus_solicitud', '=', 'esp.id')
+            ->join('users as user', 'tsp.id_usuario', '=', 'user.id')
+            ->select('tsp.*', 'esp.descripcion as estatus_name', 'user.name as usuario_name')
+            ->where('id_perito_solicitud', $id)
+            ->orderBy('tsp.created_at', 'desc')
+            ->get();
+
+        $solicitud_id = $id;
+
+        $datos_usuario = DB::connection('pgsql2')->table('solicitud_peritos as sp')
+            ->join('users as usuario', 'sp.id_usuario', '=', 'usuario.id')
+            ->select('sp.*', 'usuario.name as nombre', 'usuario.email as correo', 'usuario.cedula as cedula', 'usuario.created_at as creado')
+            ->where('sp.id', $id)
+            ->first();
+
+        // Credenciales (Preguntar si updated_at es la fecha de vencimiento)
+        $credencial = DB::connection('pgsql2')->table('credencial_peritos as cp')
+            ->join('peritos as p', 'cp.id_perito', '=', 'p.id')
+            ->select('cp.*', 'p.rnp as ncredencial', 'p.updated_at as fcredencial')
+            ->where('cp.id_perito_solicitud', $id)
+            ->first();
+
+        $data = compact('trazas', 'solicitud_id', 'datos_usuario', 'credencial');
+
+        $pdf = Pdf::loadView('pdf.traza', $data);
+        return $pdf->download('traza-'.$datos_usuario->cedula.'.pdf');
+    }
+
     public function GetExperiencia($id) {
         $profesion = DB::connection('pgsql2')->table('solicitud_profesion_peritos')->where('id_perito_solicitud',$id)->first();
 
